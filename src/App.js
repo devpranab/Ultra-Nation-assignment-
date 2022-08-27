@@ -1,9 +1,11 @@
 import { useEffect, useState } from 'react';
 import './App.css';
 import Country from './components/Country/Country';
+import Cart from './components/Cart/Cart';
 
 function App() {
   const [countries, setCountries] = useState([]);
+  const [cart, setCart] = useState([]);
 
   useEffect(() => {
     fetch("https://restcountries.com/v2/all")
@@ -15,12 +17,16 @@ function App() {
 // handleAddCuntry function
   const handleAddCuntry = country => {
     console.log("handleAddCuntry func clicked", country);
+    const newCart = [...cart, country];
+    setCart(newCart);
 }
 
   return (
     <div className="App">
      <h1>All Countries Information</h1>
-     <h4>Country loaded:  {countries.length}</h4>
+     {/* <h2>Country loaded:  {countries.length}</h2> */}
+     <h4>Country loaded:  {cart.length}</h4>
+     <Cart cart={cart}></Cart>
      <ul>
       {
          countries.map(country => 
