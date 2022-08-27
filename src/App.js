@@ -8,12 +8,7 @@ function App() {
   useEffect(() => {
     fetch("https://restcountries.com/v2/all")
     .then(res => res.json())
-    .then(data => {
-      setCountries(data);
-      console.log(data);
-      const names = data.map(country => country.name)
-      console.log(names);
-    })
+    .then(data => setCountries(data))
     .catch(err => console.log(err))
   }, [])
 
@@ -24,7 +19,7 @@ function App() {
      <ul>
       {
          countries.map(country => 
-          <Country name={country.name}></Country>)
+          <Country country={country} key={country.alpha3Code}></Country>)
       }
      </ul>
     </div>
