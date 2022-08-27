@@ -12,6 +12,11 @@ function App() {
     .catch(err => console.log(err))
   }, [])
 
+// handleAddCuntry function
+  const handleAddCuntry = country => {
+    console.log("handleAddCuntry func clicked", country);
+}
+
   return (
     <div className="App">
      <h1>All Countries Information</h1>
@@ -19,7 +24,9 @@ function App() {
      <ul>
       {
          countries.map(country => 
-          <Country country={country} key={country.alpha3Code}></Country>)
+          <Country country={country} 
+          key={country.alpha3Code}
+          handleAddCuntry={handleAddCuntry}></Country>)
       }
      </ul>
     </div>
